@@ -30,7 +30,9 @@ class Contenedor {
     async getAll() {
         const products = await fs.readFile(this.path, 'utf8')
         const allProds = JSON.parse(products)
+        console.log(allProds);
         this.list.push(allProds)
+        return this.list[0]
     }
     //: void - Elimina del archivo el objeto con el id buscado.
     deleteById(Number) {

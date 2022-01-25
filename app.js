@@ -16,8 +16,11 @@ async function enterProd (){
 
 
 }
-function getAllProd (){
-    getAll()
+
+function getId (id){
+    return producto.getById(id)
 }
 
-enterProd();
+//enterProd();
+console.log(producto.getAll());
+//console.log(getId(3))
