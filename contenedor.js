@@ -10,7 +10,7 @@ class Contenedor {
 
     //: Number - Recibe un objeto, lo guarda en el archivo, devuelve el id asignado.
     async save(prod) {
-        const txt = await fs.readFile(this.path, 'utf8');
+        const txt = await fs.readFile(this.path, 'utf-8');
         const data = JSON.parse(txt);
         const last = data[data.length - 1]
         data.push({
@@ -22,24 +22,35 @@ class Contenedor {
         return last + 1
     }
     //: Object - Recibe un id y devuelve el objeto con ese id, o null si no está.
-    getById(id) {
-        const prods = this.getAll()
-        prods.map(item=>item.id === id)
+    async getById(id) {
+        const prods = await this.getAll()
+        const result = prods.find(item=>item.id === id)
+        console.log(result);
+        return result
     }
     //: Object[] - Devuelve un array con los objetos presentes en el archivo.
     async getAll() {
-        const products = await fs.readFile(this.path, 'utf8')
+        const products = await fs.readFile(this.path, 'utf-8')
         const allProds = JSON.parse(products)
         console.log(allProds);
         this.list.push(allProds)
         return this.list[0]
     }
     //: void - Elimina del archivo el objeto con el id buscado.
-    deleteById(Number) {
+    async deleteById(id) {
+        const p = await this.getAll()
+        const r = p.filter(i => i.id !== id);
+        console.log(r);
+        await fs.writeFile(this.path, JSON.stringify(r, null, 2))
+        return r
     }
     //: void - Elimina todos los objetos presentes en el archivo.
-    deleteAll() {
+    async deleteAll(){
 
+        const p = await this.getAll()
+        const r = []
+        await fs.writeFile(this.path, JSON.stringify(r, null, 2))
+        return r
     }
 }
 

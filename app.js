@@ -17,10 +17,8 @@ async function enterProd (){
 
 }
 
-function getId (id){
-    return producto.getById(id)
-}
-
-//enterProd();
-console.log(producto.getAll());
-//console.log(getId(3))
+enterProd();
+producto.getAll();
+producto.getById(1);
+//producto.deleteById(2);
+//producto.deleteAll()
