@@ -13,6 +13,11 @@ async function enterProd (){
         price: (965),
         thumbnail: ("https://assets.specialized.com/i/specialized/91520-45_ROCKHOPPER-ELITE-29-CSTBLK-BLK_HERO")
     })
+    await producto.save({
+        title: ("Chisel"),
+        price: (1265),
+        thumbnail: ("https://assets.specialized.com/i/specialized/91718-37_CHISEL-WMN_DSW-EXPERT-29_CSTBLU-ACDLAVA_HERO")
+    })
 
 
 }
